@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <artifactId>ldk-parent</artifactId>
+    <groupId>com.github.jarrad</groupId>
+    <version>0-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>ldk-common</artifactId>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.lightningdevkit</groupId>
+      <artifactId>ldk-java</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.github.jarrad</groupId>
+      <artifactId>mempoolspace-feign</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
+  </dependencies>
+
+</project>
