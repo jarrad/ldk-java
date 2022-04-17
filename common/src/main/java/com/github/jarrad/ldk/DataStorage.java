@@ -8,24 +8,26 @@ public interface DataStorage {
 
   void persist(final Data data) throws IOException;
 
+  Data load(final String key);
+
   class Data {
 
-    public static Data of(final String name, final byte[] value) {
-      return new Data(name, value);
+    public static Data of(final String key, final byte[] value) {
+      return new Data(key, value);
     }
 
-    private Data(final String name, final byte[] value) {
-      assert name != null && name.trim().length() > 0;
-      this.name = name;
+    private Data(final String key, final byte[] value) {
+      assert key != null && key.trim().length() > 0;
+      this.key = key;
       this.value = requireNonNull(value);
     }
 
-    private String name;
+    private String key;
 
     private byte[] value;
 
-    public String getName() {
-      return name;
+    public String getKey() {
+      return key;
     }
 
     public byte[] getValue() {

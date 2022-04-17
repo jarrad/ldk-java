@@ -1,10 +1,13 @@
 package com.github.jarrad.autoconfigure.ldk;
 
-import com.github.jarrad.ldk.FileSystemPersist;
+import com.github.jarrad.ldk.DataStorage;
+import com.github.jarrad.ldk.DataStoragePersist;
+import com.github.jarrad.ldk.FileSystemDataStorage;
 import com.github.jarrad.ldk.InMemoryCachingFeeEstimator;
 import com.github.jarrad.ldk.KeySeedProvider;
 import com.github.jarrad.ldk.SecureRandomKeySeedProvider;
 import com.github.jarrad.ldk.Slf4jLogger;
+import java.io.File;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import org.ldk.enums.Network;
@@ -179,8 +182,17 @@ public class LdkNodeConfiguration {
 
     @ConditionalOnMissingBean(PersistInterface.class)
     @Bean
-    FileSystemPersist filesystemPersist() {
-      return new FileSystemPersist();
+    DataStoragePersist dataStoragePersist(final DataStorage dataStorage) {
+      return new DataStoragePersist(dataStorage);
+    }
+
+    @ConditionalOnMissingBean(DataStorage.class)
+    @Bean
+    FileSystemDataStorage fileSystemDataStorage() {
+      final String basedirName = System.getProperty("user.dir");
+      final File basedir = new File(basedirName);
+      assert basedir.exists() && basedir.isDirectory() && basedir.canWrite() : "cannot access " + basedirName;
+      return new FileSystemDataStorage(basedir);
     }
   }
 
