@@ -6,6 +6,10 @@ public interface MempoolSpaceClient {
 
   String broadcast(final byte[] tx);
 
+  String getBlockTipHash();
+
+  int getBlockTipHeight();
+
   interface RecommendedFeesResponse {
 
     Integer getFastestFee();

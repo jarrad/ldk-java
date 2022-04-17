@@ -12,6 +12,8 @@ public class LdkNodeProperties {
    */
   private String keySeed;
 
+  private String network = "regtest";
+
   private Bind bind = new Bind();
 
   private Fees fees = new Fees();
@@ -39,6 +41,14 @@ public class LdkNodeProperties {
 
   public void setKeySeed(String keySeed) {
     this.keySeed = keySeed;
+  }
+
+  public String getNetwork() {
+    return network;
+  }
+
+  public void setNetwork(String network) {
+    this.network = network;
   }
 
   public static class Bind {

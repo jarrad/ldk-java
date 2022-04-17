@@ -29,7 +29,7 @@ public class DefaultEventHandler implements EventHandler {
   @Override
   public void persist_manager(byte[] channel_manager_bytes) {
     try {
-      storage.persist(Data.of("channel_manager", channel_manager_bytes));
+      storage.persist(Data.of("channel_manager.dat", channel_manager_bytes));
     } catch (IOException e) {
       // FIXME
     }

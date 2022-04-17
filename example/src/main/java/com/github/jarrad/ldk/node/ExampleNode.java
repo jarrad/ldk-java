@@ -1,8 +1,8 @@
 package com.github.jarrad.ldk.node;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.boot.*;
+import org.springframework.boot.autoconfigure.*;
+import org.springframework.context.annotation.*;
 
 @SpringBootApplication
 public class ExampleNode {
@@ -12,8 +12,5 @@ public class ExampleNode {
   }
 
   @Configuration
-  static class ExampleNodeConfig {
-
-  }
-
+  static class ExampleNodeConfig {}
 }

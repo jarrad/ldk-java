@@ -1,6 +1,7 @@
 package com.github.jarrad.autoconfigure.ldk;
 
 import com.github.jarrad.autoconfigure.ldk.MempoolSpaceConfiguration.MempoolProperties;
+import com.github.jarrad.ldk.mempoolspace.MempoolSpaceBlockchainClient;
 import com.github.jarrad.ldk.mempoolspace.MempoolSpaceBroadcast;
 import com.github.jarrad.ldk.mempoolspace.MempoolSpaceFeeEstimator;
 import org.github.jarrad.mempoolspace.MempoolSpaceClient;
@@ -23,8 +24,7 @@ public class MempoolSpaceConfiguration {
   }
 
   @Bean
-  MempoolSpaceFeeEstimator mempoolSpaceFeeEstimator(
-      final MempoolSpaceClient mempoolSpaceClient) {
+  MempoolSpaceFeeEstimator mempoolSpaceFeeEstimator(final MempoolSpaceClient mempoolSpaceClient) {
     return new MempoolSpaceFeeEstimator(mempoolSpaceClient);
   }
 
@@ -32,6 +32,12 @@ public class MempoolSpaceConfiguration {
   @Bean
   MempoolSpaceBroadcast mempoolSpaceBroadcast(final MempoolSpaceClient mempoolSpaceClient) {
     return new MempoolSpaceBroadcast(mempoolSpaceClient);
+  }
+
+  @Bean
+  MempoolSpaceBlockchainClient mempoolSpaceBlockchainClient(
+      final MempoolSpaceClient mempoolSpaceClient) {
+    return new MempoolSpaceBlockchainClient(mempoolSpaceClient);
   }
 
   @ConfigurationProperties("ldk.node.mempool")
@@ -43,8 +49,7 @@ public class MempoolSpaceConfiguration {
       return broadcast;
     }
 
-    public void setBroadcast(
-        Broadcast broadcast) {
+    public void setBroadcast(Broadcast broadcast) {
       this.broadcast = broadcast;
     }
 
@@ -60,7 +65,5 @@ public class MempoolSpaceConfiguration {
         this.enabled = enabled;
       }
     }
-
   }
-
 }

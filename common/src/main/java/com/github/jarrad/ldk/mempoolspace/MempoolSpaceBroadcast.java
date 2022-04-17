@@ -7,6 +7,7 @@ import org.ldk.structs.BroadcasterInterface.BroadcasterInterfaceInterface;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/** BroadcasterInterface to will publish a bitcoin transaction to the <em>mempool.space</em> API. */
 public class MempoolSpaceBroadcast implements BroadcasterInterfaceInterface {
 
   private static final Logger logger = LoggerFactory.getLogger(MempoolSpaceBroadcast.class);
@@ -18,7 +19,7 @@ public class MempoolSpaceBroadcast implements BroadcasterInterfaceInterface {
   }
 
   @Override
-  public void broadcast_transaction(byte[] tx) {
+  public void broadcast_transaction(final byte[] tx) {
     final String txid = mempoolSpaceClient.broadcast(tx);
     logger.info("Broadcast as {}", txid);
   }

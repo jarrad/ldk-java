@@ -1,0 +1,6 @@
+ldk:
+  node:
+    mempool:
+      broadcast:
+        enabled: true
+    network: mainnet
